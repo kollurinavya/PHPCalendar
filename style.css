@@ -1,0 +1,334 @@
+
+#calendar_wrap{
+	width: 924px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+}
+
+h1{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	font-size: 22px;
+	color: rgba(0,0,100,0.7);
+	margin-right: auto;
+	text-align: center;
+	font-size: 40px;
+}
+
+
+
+.selectStyle{
+	height: 20px;
+	width: 100px;
+
+}
+
+body{
+	 background-image : url("backgroundImg.jpg");
+}
+
+.title_bar{
+	position: relative;
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	font-size: 22px;
+	color: rgba(100,0,0,0.5);
+	width: 100%;
+	height: 50px;
+	padding-top: 15px;
+	bottom: 0px;
+	text-align: center;
+	background-color: rgba(0,0,100,0.6);	
+}
+
+.days{
+	
+	width: 100%;
+	height: 50px;
+	margin-bottom: 4px;
+	background-color: rgba(0,0,100,0.6);	
+
+}
+
+.Mbutton{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	 background-color: rgba(100,0,0,0.5);
+    border: none;
+    color: white;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 50px;
+    font-size: 30px;
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+.Addbutton{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 50;
+	 background-color: rgba(100,0,0,0.5);
+    border: none;
+    color: white;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+    font-size: 14px;
+   }
+
+.Ybutton{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	background-color: rgba(0,100,0,0.5);
+    border: none;
+    color: white;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px	;
+    margin-left: 20px;
+}
+.userInput{
+
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 150px;
+	color: rgba(100,0,0,0.5);
+	 background-color: rgba(0,100,0,0.5);
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.prev_month{
+	float: left;
+	width: 50px;
+	height: 28px;
+	text-align: left;
+	margin-bottom: 2px;
+	color: rgb(100,0,0);
+	
+}
+.prev_year{
+	float: left;
+	width: 50px;
+	height: 28px;
+	text-align: left;
+	margin-bottom: 2px;
+	color: rgb(100,0,0);
+	
+}
+.show_month{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	float: left;
+	width: 660px;
+	height: 30px;
+	color: rgba(100,0,0,0.5);
+	margin-left: 20px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.next_month{
+	float: left;
+	width: 50px;
+	height: 28px;
+	margin-bottom: 2px;
+	text-align: center;
+}
+.next_year{
+
+	float: left;
+	width: 50px;
+	height: 28px;
+	margin-bottom: 2px;
+	text-align: center;	
+}
+.name_of_days{
+	float: left;
+	width: 14%;
+	height: 30px;
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+	color: rgba(100,0,0,0.5);
+	font-size: 24px;
+	text-align: center;
+}
+.show_event{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 100;
+	float: left;
+	height: 18px;
+	color: rgba(0,0,100,0.8);
+	font-size: 20px;
+	text-align: center;
+}
+.signout{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 100;
+	padding-right: 100px;
+	height: 18px;
+	color: rgba(0,0,100,0.5);
+	font-size: 20px;
+	text-align: center;
+	float: right;
+}
+
+.add_event{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 50;
+	float: left;
+	height: 18px;
+	color: rgba(100,0,0,0.5);
+	font-size: 14px;
+	text-align: center;
+}
+.calendar_day{
+	position: relative;
+	float: left;
+	width: 128px;
+	height: 95px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	text-align: center;
+	background-color: rgba(0,0,100,0.2);
+}
+.pcalendar_day{
+	position: relative;
+	float: left;
+	width: 128px;
+	height: 95px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	text-align: center;
+	background-color: rgba(100,0,0,0.5);
+}
+.day_heading{
+	position: relative;
+	float: left;
+	width: 40px;
+	height: 16px;
+	color: #000;
+	font-family:"Times New Roman", Georgia, Serif;
+	font-size: 20px;
+}
+.pday_heading{
+	position: relative;
+	float: left;
+	width: 40px;
+	height: 16px;
+	color: #000;
+	font-family:"Times New Roman", Georgia, Serif;
+	font-size: 20px;
+	background-color: rgba(100,0,0,0.7);
+}
+.non_cal_days{
+
+	position: relative;
+	float: left;
+	margin-right: 4px;
+	width: 128px;
+	height: 95px;
+	background-color: rgba(178,190,181,0.7);	
+	
+}
+.clear{
+	clear: both;
+}
+.overlay{
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 2000;
+	background-color: #000;
+	opacity: 0.9;
+}
+
+#events{
+	display: none;
+	width: 500px;
+	z-index: 3000;
+	border: 4px solid #9C9;
+	overflow: scroll;
+	height: 400px;
+	margin-top: 100px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #FFF;
+	padding: 15px;
+
+}
+#AddEvents{
+	display: none;
+	width: 500px;
+	z-index: 3000;
+	border: 4px solid #9C9;
+	overflow: scroll;
+	height: 200px;
+	margin-top: 100px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #FFF;
+	padding: 15px;
+
+}
+.updateEvent{
+	display: none;
+}
+
+.addevents label,textarea{
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 50;
+	font-size: 16px;
+	color: rgba(0,0,100,0.6);
+  display:inline-block;
+  vertical-align:middle;
+}
+.updateEvent label,textarea{
+	
+	font-family: "Permanent Marker";
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 50;
+	font-size: 16px;
+	color: rgba(0,0,100,0.6);
+  display:inline-block;
+  vertical-align:middle;	
+}
+.event_style{
+	width: 100%;
+	clear : left;
+	text-align: center;
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title> PHP calendar </title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Permanent+Marker" />
+	
+<script>
+var showmonth;
+var showyear;
+var showday;
+function UpdateEvent(event_id,month,day,year,userid,count){
+	var id = count+''+count;//id of the edited comment text area id
+	var description = document.getElementById(id).value;
+	$.ajax({
+		type: "POST",
+		url: "events.php",
+		data:{action:"updateEvent",eventId:event_id,month:month,day:day,year:year,userid:userid,description: description },
+		success: function(results){
+			if(results.indexOf("updateSuccess") >= 0){
+					$("#status").empty().append("Successfully updated the event!") ;	
+					overlay();
+					window.location.reload();
+
+			}else if(results.indexOf("updateFail") >= 0){
+				$("#status").empty().append("Successfully updated the event!") ;	
+			}
+		}
+	});
+}
+function showUpdate(idNumber,element){
+	
+	var ele = document.getElementById(idNumber);
+	element.style.display = "none";
+	ele.style.display = "block";
+}
+function deleteEvent(event_id,month,day,year,userid){
+	$.ajax({
+		type: "POST",
+		url: "events.php",
+		data:{action:"deleteEvent",eventId:event_id,month:month,day:day,year:year,userid:userid },
+		success: function(results){
+			if(results.indexOf("deleteSuccess") >= 0){
+				
+					$("#status").empty().append("Successfully deleted the event!") ;	
+					overlay();
+					window.location.reload();
+
+			}else if(results.indexOf("deleteFail") >= 0){
+				$("#status").empty().append("delete failed try again later") ;	
+			}
+		}
+	});
+}
+function overlay(){
+	eve = document.getElementById("event_overlay");
+	eve.style.display = (eve.style.display == "block")?"none":"block";
+	eve = document.getElementById("events");
+	eve.style.display = (eve.style.display == "block")?"none":"block";
+
+
+}
+function userInput(){
+	var month = document.getElementById("month").value;
+	var day = document.getElementById("days").value;
+	var year= document.getElementById("year").value;
+	showmonth =month;
+	showyear = year;
+	showday = day;
+	$.ajax({
+		type: "POST",
+		url: "show_calendar.php",
+		data:{action:"userInput",showday: showday,showmonth: showmonth,showyear: showyear},
+		success:function(results){
+			$("#cal").empty().append(results);
+		}
+	});
+}
+function loadCal(){
+	var currTime = new Date();
+	var pmonth = currTime.getMonth()+1;
+	var pyear = currTime.getFullYear();
+	var pday = currTime.getDate();
+	showmonth = pmonth;
+	showyear = pyear;
+	showday = pday;
+
+	$.ajax({
+		type: "POST",
+		url : "show_calendar.php",
+		data:{action:"onload",showday: showday,showmonth: showmonth,showyear: showyear},
+		success: function(results){
+			$("#cal").empty().append(results);
+		}
+	});
+
+}
+
+
+function nextmonth(){
+	var nmonth = showmonth*1+1;
+	if(nmonth >12){
+		nmonth = 1;
+		showyear += 1;
+	}
+	showmonth = nmonth;
+
+	$.ajax({
+		type: "POST",
+		url : "show_calendar.php",
+		data:{action:"nextmonth",showday: showday,showmonth: showmonth,showyear: showyear},
+		success: function(results){
+			$("#cal").empty().append(results);
+		}
+	});	
+}
+
+function prevmonth(){
+
+	var pmonth = showmonth*1-1;
+	if(pmonth <1){
+		pmonth = 12;
+		showyear -= 1;
+	}
+	showmonth = pmonth;
+	$.ajax({
+		type: "POST",
+		url : "show_calendar.php",
+		data:{action:"prevmonth",showday: showday,showmonth: showmonth,showyear: showyear},
+		success: function(results){
+			$("#cal").empty().append(results);
+		}
+	});	
+}
+
+function prevyear(){
+	showyear = showyear*1-1;
+	$.ajax({
+		type: "POST",
+		url : "show_calendar.php",
+		data:{action:"prevyear",showday: showday, showmonth:showmonth, showyear:showyear},
+		success: function(results){
+			$("#cal").empty().append(results);
+		}
+	});	
+}
+
+
+function nextyear(){
+	showyear = showyear*1+1;
+	$.ajax({
+		type: "POST",
+		url : "show_calendar.php",
+		data:{action:"nextyear",showday: showday, showmonth: showmonth, showyear: showyear},
+		success: function(results){
+			$("#cal").empty().append(results);
+		}
+	});	
+}
+
+function showEventDetails(userid,month,day,year){
+	var eventId = month+'/'+day+'/'+year;
+	var userid = userid;
+	eve = document.getElementById("event_overlay");
+	eve.style.display = (eve.style.display == "block")? "none":"block";
+	eve = document.getElementById("events");
+	eve.style.display = (eve.style.display=="block")? "none":"block";
+	$.ajax({
+		type: "POST",
+		url: "events.php",
+		data:{action:"showEvent",eventId: eventId,userid:userid},
+		success: function(results){
+
+			$("#events").empty().append(results) ;
+		}
+	});
+
+}
+
+function addEvent(userid,month,day,year){
+	var month = document.getElementById("month").value;
+	var day = document.getElementById("days").value;
+	var year= document.getElementById("year").value;
+	var eventId = month+'/'+day+'/'+year;
+	document.getElementById("userid").value = userid;
+	document.getElementById("edate").value = eventId;
+	eve = document.getElementById("event_overlay");
+	eve.style.display = (eve.style.display == "block")? "none":"block";
+	eve = document.getElementById("AddEvents");
+	eve.style.display = (eve.style.display=="block")? "none":"block";
+
+}
+function cancel(){
+	eve = document.getElementById("AddEvents");
+	eve.style.display = (eve.style.display == "block")?"none":"block";
+	eve = document.getElementById("event_overlay");
+	eve.style.display = (eve.style.display == "block")?"none":"block";
+	window.location.reload();
+}
+function mainAddEvent(){
+	var description = document.getElementById("textarea").value;
+	var userid = document.getElementById("userid").value;
+	var edate =  document.getElementById("edate").value;
+	$.ajax({
+		type: "POST",
+		url: "events.php",
+		data: {action:"addEvent",edate: edate,userid:userid,description:description},
+		success: function(results){
+			if(results.indexOf("userexists") >=0){
+				$("#addsuccess").empty().append("User already exist try again!") ;	
+			}else if(results.indexOf("addsuccess") >= 0){
+				
+					$("#addsuccess").empty().append("Add is successful! Press Cancel to exit!") ;	
+
+			}else if(results.indexOf("addfail") >= 0){
+				$("#addsuccess").empty().append("Add failed try again later") ;	
+			}
+		}
+
+	});
+}
+function goTologinPage(){
+	location.href = "index.html";
+}
+
+	</script>
+</head>
+<body onload="loadCal()">
+   <h1> Calendar </h1>
+   <div id = signout>
+       <a class ="signout" href ="index.html"> SignOut</a>
+   </div>
+   <br>
+		<div id="cal"></div>
+	<div id = "event_overlay">
+		<div id = "events">
+		</div>
+		<div id = "AddEvents" class = "addevents">
+			<label id ="label">Enter Event description with start time:</label>
+			<textarea name = "addEvent" id="textarea"> </textarea><br>
+			<button class = "Addbutton" name = "add" id = "add" onClick="mainAddEvent();" > Add</button>
+			<button class ="Addbutton" name = "cancel" id="cancel" onClick ="cancel();">Cancel </button>
+			<div id ="addsuccess" ></div>
+		</div>
+	</div>
+	<div id="status"></div>
+	<input type = "hidden" name ="userid" id = "userid"></input>
+	<input type = "hidden" name ="edate" id = "edate"></input>
+</body>
+
+</html>

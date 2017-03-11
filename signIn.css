@@ -1,0 +1,49 @@
+.form-submit {
+  max-width: 1000px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+body {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  background-image : url("backgroundImg.jpg");
+}
+
+.form-submit {
+  margin-bottom: 10px;
+
+}
+
+.heading{
+    margin-bottom: 10px;
+    font-family: "Permanent Marker";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 100px;
+  color: rgba(0,0,100,0.7);
+
+}
+
+.form-submit .form-control {
+  position: absolute;
+  width: 50px;
+  height: auto;
+  padding: 10px;
+  font-size: 20px;
+  
+}
+
+.flabel{
+  float: left ;
+  font-family: "Permanent Marker";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 100px;
+  color: rgba(0,0,100,0.7);s
+
+}
+.centered{
+	 text-align: center;
+}
